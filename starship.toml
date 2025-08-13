@@ -1,0 +1,59 @@
+format = """$directory$git_branch$git_status$nodejs$python$rust$cmd_duration$line_break$character"""
+
+# Clean prompt symbols
+[character]
+success_symbol = "[](bold green)"
+error_symbol = "[](bold red)"
+
+# Concise directory display
+[directory]
+style = "bold blue"
+truncation_length = 2
+truncate_to_repo = true
+read_only = "🔒"
+
+# Minimal git branch
+[git_branch]
+symbol = ""
+style = "purple"
+truncation_length = 12
+
+# Essential git status only
+[git_status]
+ahead = "↑${count}"
+behind = "↓${count}"
+diverged = "↕${count}"
+modified = "~${count}"
+staged = "+${count}"
+untracked = "?${count}"
+style = "red"
+
+# Language indicators (only when relevant)
+[nodejs]
+symbol = "⬢ "
+style = "green"
+detect_files = ["package.json", ".nvmrc", "yarn.lock", "pnpm-lock.yaml"]
+format = "[$symbol($version)]($style) "
+
+[python]
+symbol = "🐍"
+style = "yellow"
+detect_files = ["requirements.txt", "pyproject.toml", ".python-version"]
+
+[rust]
+symbol = "🦀"
+style = "red"
+detect_files = ["Cargo.toml"]
+
+# Show slow commands only
+[cmd_duration]
+min_time = 2000
+format = "[$duration](yellow)"
+
+# Disable unused modules for speed
+[aws]
+disabled = true
+[gcloud]
+disabled = true
+[kubernetes]
+disabled = true
